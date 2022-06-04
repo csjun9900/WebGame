@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import "./Preview.css";
 
 import { buildBoard } from "../business/Board";
 import { transferToBoard } from "../business/Tetrominoes";
@@ -11,7 +11,7 @@ const Preview = ({ tetromino, index }) => {
 
   const board = buildBoard({ rows: 4, columns: 4 });
 
-  const style = { top: `${index * 15}vw` };
+  const style = { top: `${index * 15}vw`, marginTop: 80 };
 
   board.rows = transferToBoard({
     className,
@@ -22,7 +22,7 @@ const Preview = ({ tetromino, index }) => {
   });
 
   return (
-    <PreviewDiv style={style}>
+    <div className="Preview" style={style}>
       <div className="Preview-board">
         {board.rows.map((row, y) =>
           row.map((cell, x) => (
@@ -30,26 +30,8 @@ const Preview = ({ tetromino, index }) => {
           ))
         )}
       </div>
-    </PreviewDiv>
+    </div>
   );
 };
 
 export default React.memo(Preview);
-
-const PreviewDiv = styled.div`
-  position: absolute;
-  top: 0;
-  left: 72.2vw;
-  background: rgba(0, 0, 0, 0.1);
-  border: 10px solid rgba(0, 0, 0, 0);
-  border-radius: 10px;
-
-  .Preview-board {
-    display: grid;
-    grid-gap: 2px;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    width: 11vw;
-    height: 11vh;
-  }
-`;

@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Game cols={10} rows={20} />
+      <Game rows={20} columns={10} />
     </div>
   );
 }
