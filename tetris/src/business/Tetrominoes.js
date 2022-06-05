@@ -63,8 +63,18 @@ export const randomTetromino = () => {
   const keys = Object.keys(TETROMINOES); // 객체 속성의 이름 배열로 반환
   const index = Math.floor(Math.random() * keys.length);
   const key = keys[index];
-  console.log(TETROMINOES[key]);
+  // console.log(TETROMINOES[key]);
   return TETROMINOES[key];
+};
+
+export const rotate = ({ piece, direction }) => {
+  const newPiece = piece.map((_, index) =>
+    piece.map((column) => column[index])
+  );
+
+  if (direction > 0) return newPiece.map((row) => row.reverse());
+
+  return newPiece.reverse();
 };
 
 export const transferToBoard = ({
